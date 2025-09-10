@@ -11,7 +11,7 @@ using MunicipalMvcApp.Data;
 namespace Municipal_services_app.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250909235735_InitialCreate")]
+    [Migration("20250910165209_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

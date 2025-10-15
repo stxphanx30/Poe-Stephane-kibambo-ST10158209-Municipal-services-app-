@@ -12,5 +12,6 @@ namespace Municipal_services_app.Models
         public List<Event> Events { get; set; } = new();
         public List<Event> Recommendations { get; set; } = new();
         public List<string> Categories { get; set; } = new();
+        public List<Announcement> Announcements { get; set; } = new();
     }
 }

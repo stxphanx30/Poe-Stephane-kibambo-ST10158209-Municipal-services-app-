@@ -1,44 +1,41 @@
 using Microsoft.EntityFrameworkCore;
 using Municipal_services_app.Models;
-using MunicipalMvcApp.Data; 
+using MunicipalMvcApp.Data;
+using Municipal_services_app.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// MVC controllers + views
+// --- MVC controllers + views ---
 builder.Services.AddControllersWithViews();
 
-// --- SQLite connection (App_Data/municipal.db) ---
-var configured = builder.Configuration.GetConnectionString("DefaultConnection");
-
-// Ensure App_Data exists and build an absolute path
+// --- SQLite connection ---
 var dataDir = Path.Combine(builder.Environment.ContentRootPath, "App_Data");
 Directory.CreateDirectory(dataDir);
 var dbPath = Path.Combine(dataDir, "municipal.db");
+var connectionString = $"Data Source={dbPath}";
 
-// If the connection string points to App_Data, replace with absolute path
-var connectionString = string.IsNullOrWhiteSpace(configured)
-    ? $"Data Source={dbPath}"
-    : configured.Contains("App_Data", StringComparison.OrdinalIgnoreCase)
-        ? $"Data Source={dbPath}"
-        : configured;
-
-// Register EF Core + SQLite
+// --- Register EF Core + SQLite ---
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(connectionString));
 
-// registering the data and seeding the database
-var options = new DbContextOptionsBuilder<AppDbContext>()
-    .UseSqlite("Data Source=events.db")
-    .Options;
-
-using (var db = new AppDbContext(options))
-{
-    Seeder.EnsureSeedData(db);
-}
+// --- Register EventStore as scoped for DI ---
+builder.Services.AddScoped<EventStore>();
 
 var app = builder.Build();
 
-// Pipeline
+// --- Ensure DB exists and seed data ---
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.EnsureCreated();  // creates tables if not exist
+    Seeder.EnsureSeedData(db);
+
+    // Preload EventStore
+    var store = scope.ServiceProvider.GetRequiredService<EventStore>();
+    // no parameter needed: EventStore uses injected DbContext
+}
+
+// --- Middleware / pipeline ---
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -47,11 +44,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-//to /Home/Status/{code}
 app.UseStatusCodePagesWithReExecute("/Home/Status/{0}");
-
 app.UseAuthorization();
 
 app.MapControllerRoute(

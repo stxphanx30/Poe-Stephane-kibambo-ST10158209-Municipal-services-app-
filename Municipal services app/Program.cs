@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Municipal_services_app.Models;
 using MunicipalMvcApp.Data; 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,7 +26,15 @@ var connectionString = string.IsNullOrWhiteSpace(configured)
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(connectionString));
 
+// registering the data and seeding the database
+var options = new DbContextOptionsBuilder<AppDbContext>()
+    .UseSqlite("Data Source=events.db")
+    .Options;
 
+using (var db = new AppDbContext(options))
+{
+    Seeder.EnsureSeedData(db);
+}
 
 var app = builder.Build();
 

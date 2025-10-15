@@ -104,10 +104,13 @@ Municipal_services_app/
 2. Update your connection string in appsettings.json or leave the default one
 
 3. Run the database migration:
-   
+   ```
 **update-database** in the package manager console
+```
 Start the project:
+```
 **dotnet run**
+```
 Open your browser at:
 **👉 https://localhost:5001**
 

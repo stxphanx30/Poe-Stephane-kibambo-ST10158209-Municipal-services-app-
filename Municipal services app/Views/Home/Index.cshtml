@@ -3,30 +3,35 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!-- HERO -->
-<section class="about-hero text-white hero-rounded">
-    <div class="hero-overlay">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-8">
-                    <h1 class="hero-title">Report. Track. Improve.</h1>
-                    <p class="hero-subtitle">
-                        Help us keep the municipality running smoothly. Log issues in minutes,
-                        and we’ll update you every step of the way.
-                    </p>
-                    <p class="mb-3">
-                        <a class="btn btn-primary btn-lg me-2" href="@Url.Action("Create", "Home")">
-                            <i class="fa-solid fa-circle-exclamation"></i> Report an Issue
-                        </a>
-                        <a class="btn btn-outline-light btn-lg" href="@Url.Action("About", "Home")">How it works</a>
-                    </p>
-                    <ul class="hero-highlights list-inline">
-                        <li class="list-inline-item"><i class="fa-regular fa-clock"></i> ~3 mins to submit</li>
-                        <li class="list-inline-item"><i class="fa-solid fa-location-dot"></i> Ward-based tracking</li>
-                        <li class="list-inline-item"><i class="fa-solid fa-shield-halved"></i> POPIA-friendly</li>
-                    </ul>
-                </div>
+<section class="about-hero text-white">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <p class="eyebrow text-uppercase text-white-50 mb-2">MUNICIPAL SERVICES</p>
+                <h1 class="hero-title">Report. Track. Improve.</h1>
+                <p class="hero-subtitle">
+                    Help us keep the municipality running smoothly. Log issues in minutes,
+                    and we’ll update you every step of the way.
+                </p>
+                <p class="mb-3">
+                    <a class="btn btn-primary btn-lg me-2" href="@Url.Action("Create", "Report")">
+                        <i class="fa-solid fa-circle-exclamation"></i> Report an Issue
+                    </a>
+                    <a class="btn btn-outline-light btn-lg" href="@Url.Action("About", "Home")">How it works</a>
+                </p>
+                <ul class="hero-highlights list-inline">
+                    <li class="list-inline-item"><i class="fa-regular fa-clock"></i> ~3 mins to submit</li>
+                    <li class="list-inline-item"><i class="fa-solid fa-location-dot"></i> Ward-based tracking</li>
+                    <li class="list-inline-item"><i class="fa-solid fa-shield-halved"></i> POPIA-friendly</li>
+                </ul>
             </div>
         </div>
+    </div>
+    <!-- Decorative wave -->
+    <div class="about-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path d="M0,0 C240,80 480,120 720,120 C960,120 1200,80 1440,0 L1440,120 L0,120 Z" fill="#ffffff"></path>
+        </svg>
     </div>
 </section>
 
@@ -61,18 +66,18 @@
                     <div class="card-body">
                         <h4><i class="fa-solid fa-circle-exclamation text-primary"></i> Report Issues</h4>
                         <p>Log problems like water leaks, potholes, refuse collection, and more.</p>
-                        <p><a class="btn btn-primary" href="@Url.Action("Create", "Home")">Get Started</a></p>
+                        <p><a class="btn btn-primary" href="@Url.Action("Create", "Report")">Report</a></p>
                     </div>
                 </div>
             </div>
-            <!-- Coming soon -->
+            <!-- Active card -->
             <div class="col-md-4">
-                <div class="card h-100 card-disabled" aria-disabled="true" title="Coming soon">
-                    <div class="card-ribbon">Coming soon</div>
+                <div class="card h-100 card-active">
+                    <div class="card-ribbon">New</div>
                     <div class="card-body">
                         <h4><i class="fa-solid fa-bullhorn"></i> Local Events & Announcements</h4>
                         <p>Stay informed about community meetings, maintenance schedules, and alerts.</p>
-                        <p><a class="btn btn-outline-secondary disabled" href="#" tabindex="-1">View</a></p>
+                        <p><a class="btn btn-primary" href="@Url.Action("Load", "Event")">See all</a></p>
                     </div>
                 </div>
             </div>

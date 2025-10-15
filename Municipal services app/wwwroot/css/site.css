@@ -971,3 +971,51 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
     padding-top: 10px;
     margin-top: 10px;
 }
+/* Toggle buttons */
+.tab-btn {
+    border: none;
+    padding: 10px 25px;
+    margin: 0 5px;
+    border-radius: 25px;
+    background-color: #f0f0f0;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+    .tab-btn.active {
+        background: linear-gradient(135deg, #1e3c72, #2a5298); /* same as about-hero */
+        color: #fff;
+    }
+
+/* Badge count */
+.badge-count {
+    background-color: red;
+    color: #fff;
+    font-size: 0.8rem;
+    margin-left: 5px;
+}
+
+/* Cards styling */
+.card-event, .card-announcement {
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1e3c72, #2a5298); /* same gradient as about-hero */
+    color: #fff;
+    padding: 15px;
+}
+
+/* Card footer category badge */
+.card-footer .badge-category {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 8px;
+}
+
+/* Section titles */
+.section-title {
+    margin-bottom: 20px;
+    font-weight: 700;
+}

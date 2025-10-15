@@ -65,7 +65,7 @@ The data is stored in the database and can be viewed by municipal staff for foll
 ---
 
 ## 🗂️ Project Structure
-
+```
 Municipal_services_app/
 |
 ├── Controllers/
@@ -91,7 +91,7 @@ Municipal_services_app/
 |   └── Home/
 |
 └── README.md
-
+```
 
  ---
 

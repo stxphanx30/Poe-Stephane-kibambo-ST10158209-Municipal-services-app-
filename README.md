@@ -105,14 +105,14 @@ Municipal_services_app/
 
 3. Run the database migration:
   
-**update-database** in the package manager console
+- **update-database** in the package manager console
 
 Start the project:
 
-**dotnet run**
+- **dotnet run**
 
 Open your browser at:
-**👉 https://localhost:5001**
+- **👉 https://localhost:5001**
 
 ---
 

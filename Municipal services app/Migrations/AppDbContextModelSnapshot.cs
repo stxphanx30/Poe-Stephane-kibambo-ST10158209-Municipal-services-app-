@@ -117,6 +117,27 @@ namespace Municipal_services_app.Migrations
 
                     b.ToTable("Events");
                 });
+
+            modelBuilder.Entity("Municipal_services_app.Models.SearchTerm", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("LastSearched")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Term")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SearchTerms");
+                });
 #pragma warning restore 612, 618
         }
     }

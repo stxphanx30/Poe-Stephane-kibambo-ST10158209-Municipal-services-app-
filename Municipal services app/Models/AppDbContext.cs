@@ -11,6 +11,7 @@ namespace MunicipalMvcApp.Data
         public DbSet<Issue> Issues => Set<Issue>();
         public DbSet<Event> Events { get; set; } = null!;
         public DbSet<Announcement> Announcements { get; set; } = null!;
+     
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
            //We are setting table names

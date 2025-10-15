@@ -1,74 +1,66 @@
-# 🏛️ Municipal Services App
+# 🏙️ Municipal Services App
 
-A municipal web application built with **ASP.NET Core MVC** and **Entity Framework**, allowing users to view local **events**, submit **community reports**, and explore smart **recommendations** based on interests and searches.
+## 📖 Project Description
 
----
+The **Municipal Services App** is a modern web platform designed to help municipalities efficiently manage and share local information.  
+It provides a centralized system for displaying **events**, **announcements**, and **community reports**, allowing citizens to stay informed and engaged with their local government.
 
-## 📘 Overview
+Built with **ASP.NET Core MVC** and **Entity Framework Core**, the app utilizes advanced data structures, including **queues**, **stacks**, **dictionaries**, and **priority queues**, to optimize search, categorization, and recommendation performance.  
 
-The **Municipal Services App** helps citizens stay informed and connected with their municipality.  
-It allows users to:
-- Discover upcoming **events** and community announcements  
-- Submit **reports** for public issues (e.g., damaged roads, water leaks, etc.)  
-- Get **personalized event recommendations** based on recent searches and interests  
-
-The app uses efficient **data structures** like queues, stacks, and dictionaries to manage performance and search speed.
-
----
-
-## ⚙️ Main Features
-
-### 🔹 Event Management
 Users can:
-- Add new events  
-- Search and filter events by **category**, **date**, or **keywords**  
-- View recommended events generated from recent search activity  
-- Automatically organize events by date and category for quick access  
+- Browse and search for upcoming **events**
+- View official **announcements**
+- Submit **reports** for municipal issues (e.g., road, water, or electricity problems)
+- Receive **personalized recommendations** based on recent search behavior
+
+The platform is fully modular and scalable, making it suitable for integration into larger smart city systems.
 
 ---
 
-### 🔹 Report Submission (User Function)
-Citizens can submit a report containing:
-- Name of the reporter  
-- Report category (e.g., Water, Road, Electricity, etc.)  
-- Description of the issue  
-
-Once submitted, reports are saved to the database and can be reviewed by administrators.
-
----
-
-### 🔹 Search and Recommendation System
-- The system records and tracks recent searches to build recommendations  
-- Uses **priority queues** to identify upcoming events  
-- Suggests events related to user interest or top-searched categories  
-- Displays recommendations dynamically at the bottom of the interface  
+## 🚀 Features
+- 📅 Event Management (Add, View, Search, Filter)
+- 📢 Announcements Section
+- 🧠 Smart Recommendations based on user searches
+- 🗂️ Categorization by type and date
+- 📝 Report Submission (category, description, location)
+- 🧱 Efficient data handling using in-memory structures
+- 🧭 Undo stack and queue-based search tracking
+- ⚡ Persistent recommendation data (saved in database)
 
 ---
 
-### 🔹 Undo and Rebuild System
-- Every modification (add/remove) is tracked using a **stack-based undo mechanism**  
-- Indexes are dynamically rebuilt for accuracy when events are removed  
+## 🧠 Technologies Used
+
+<p align="left">
+  <img src="https://skillicons.dev/icons?i=dotnet,cs,bootstrap,javascript,html,css,sqlite,git,github,vscode" />
+</p>
+
+- **Frontend:** HTML5, CSS3, Bootstrap, JavaScript (Dynamic filtering and search)
+- **Backend:** ASP.NET Core MVC (C#)
+- **Database:** Entity Framework Core (SQLite / SQL Server)
+- **Version Control:** Git & GitHub
+- **IDE:** Visual Studio / VS Code
 
 ---
 
-## 🧩 Core Structures Used
+## ⚙️ How It Works
 
-- **`SortedDictionary<DateTime, List<Event>>`** → Groups events by date  
-- **`Dictionary<string, List<Event>>`** → Stores events by category  
-- **`PriorityQueue<Event, DateTime>`** → Keeps track of upcoming events  
-- **`Queue<string>`** → Stores recent searches  
-- **`Stack<Action>`** → Supports undo operations  
-- **`HashSet<string>`** → Keeps all categories unique  
+### 🔍 Search & Recommendation Logic
+- When a user types a search query, it’s stored in a **queue**.
+- The system tracks the most frequent search terms in a **dictionary**.
+- Using a **priority queue**, the app identifies and recommends events most relevant to the user’s interests.
+- Recommendations are **persisted** to the database so that they remain after page reload or restart.
 
----
+### 🧾 Report Submission
+Users can submit reports to the municipality directly through the platform.
 
-## 🧠 How It Works (Summary)
+Each report includes:
+- Reporter name  
+- Category (e.g., “Water Issue”, “Road Damage”)  
+- Description of the problem  
+- Optional photo or document  
 
-1. When the app starts, all events are loaded from the database and indexed.  
-2. The user can **add**, **search**, or **filter** events.  
-3. The system saves **recent searches** to recommend future events.  
-4. Users can **submit reports** describing issues in their area.  
-5. Admins can manage both events and reports from the dashboard.  
+The data is stored in the database and can be viewed by municipal staff for follow-up.
 
 ---
 

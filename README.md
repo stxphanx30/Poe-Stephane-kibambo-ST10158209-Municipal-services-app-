@@ -71,28 +71,40 @@ Built with *ASP.NET Core MVC, **Entity Framework Core, and **Bootstrap 5, this s
 Municipal_services_app/
 |
 ├── Controllers/
-|   ├── EventController.cs
+|   ├── HomeController.cs
 |   ├── ReportController.cs
-|   └── HomeController.cs
+|   ├── EventController.cs
+|   ├── RequestController.cs
+|   ├── AdminRequestsController.cs
+|   └── AccountController.cs
 |
 ├── Models/
 |   ├── Announcement.cs
-|   ├── AppDbContext.cs
-|   ├── ErrorViewModel.cs
 |   ├── Event.cs
-|   ├── EventsIndexViewModel.cs
-|   ├── SearchTerm.cs
-|   └── Seeder.cs
+|   ├── Issue.cs
+|   ├── Recommendation.cs
+|   ├── AppDbContext.cs
+|   └── ViewModels (for admin & requests)
 |
 ├── Services/
-|   └── EventStore.cs
+|   ├── EventStore.cs
+|   └── RequestStore.cs   ← BST, Heap, Graph logic here
 |
 ├── Views/
+|   ├── Shared/ (_Layout.cshtml, _ValidationScriptsPartial.cshtml)
 |   ├── Event/
 |   ├── Report/
-|   └── Home/
+|   ├── Request/
+|   ├── AdminRequests/
+|   └── Account/
 |
-└── README.md
+├── wwwroot/
+|   ├── css/
+|   ├── js/
+|   └── svg/ (municipal branding)
+|
+├── appsettings.json
+└── README.md 
 ```
 
  ---
@@ -127,9 +139,22 @@ Municipal_services_app/
 ---
 
 📝 Report Endpoints
-| Method   | Endpoint          | Description                                             |
-| :------- | :---------------- | :------------------------------------------------------ |
-| **POST** | `/Report/Create` | Submit a new report (name, category, description, image) |
+| Method   | Endpoint                 | Description                         |
+| -------- | ------------------------ | ----------------------------------- |
+| **POST** | `/Report/Create`         | Submit a new report                 |
+| **GET**  | `/Request/Status`        | View all submitted service requests |
+| **GET**  | `/Request/Details/{ref}` | View details and status timeline    |
+
+
+---
+
+🧠 Admin Actions
+| Method   | Endpoint                    | Description                         |
+| -------- | --------------------------- | ----------------------------------- |
+| **GET**  | `/AdminRequests/Index`      | View all requests (Admin only)      |
+| **GET**  | `/AdminRequests/Edit/{ref}` | Update status of a specific request |
+| **POST** | `/Account/Login`            | Authenticate as admin               |
+| **POST** | `/Account/Logout`           | End admin session                   |
 
 ---
 
@@ -145,17 +170,13 @@ Municipal_services_app/
 
 ---
 
-🧠 Example Flow
+🧠 Example Workflow
 
-1. User searches for “Youth Events”.
-
-2. Search term is added to the Queue and stored in searchCounts.
-
-3. Recommendations update automatically based on frequency.
-
-4. Events are displayed using SortedDictionary (by date) and Dictionary (by category).
-
-5. Reports can be submitted anytime using the ReportController.
+1️⃣ A user reports a road issue with an attachment.
+2️⃣ The issue is stored in the DB and indexed in a BST for quick reference.
+3️⃣ An admin logs in and views it on the dashboard via a heap-prioritized queue.
+4️⃣ The admin updates the status to “In Progress.”
+5️⃣ The user can check the current status using the request reference code.
 
 --- 
 

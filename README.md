@@ -1,31 +1,29 @@
-# 🏙️ Municipal Services App
+# 🏙 Municipal Services Web Application
 
 ## 📖 Project Description
 
-The **Municipal Services App** is a modern web platform designed to help municipalities efficiently manage and share local information.  
-It provides a centralized system for displaying **events**, **announcements**, and **community reports**, allowing citizens to stay informed and engaged with their local government.
+The *Municipal Services App* is a comprehensive ASP.NET MVC web platform designed for residents and municipal administrators to interact efficiently.  
+It provides an all-in-one solution for *reporting local issues, **tracking service requests, **viewing local events, and **reading announcements* — promoting community transparency and smart city governance.
 
-Built with **ASP.NET Core MVC** and **Entity Framework Core**, the app utilizes advanced data structures, including **queues**, **stacks**, **dictionaries**, and **priority queues**, to optimize search, categorization, and recommendation performance.  
-
-Users can:
-- Browse and search for upcoming **events**
-- View official **announcements**
-- Submit **reports** for municipal issues (e.g., road, water, or electricity problems)
-- Receive **personalized recommendations** based on recent search behavior
-
-The platform is fully modular and scalable, making it suitable for integration into larger smart city systems.
+Built with *ASP.NET Core MVC, **Entity Framework Core, and **Bootstrap 5, this system leverages **advanced data structures* — such as *Binary Search Trees (BSTs), **Heaps, and **Graphs* — to organize, manage, and optimize service request tracking.
 
 ---
 
 ## 🚀 Features
-- 📅 Event Management(View, Search, Filter)
-- 📢 Announcements Section
-- 🧠 Smart Recommendations based on user searches
-- 🗂️ Categorization by type and date
-- 📝 Report Submission (category, description, location)
-- 🧱 Efficient data handling using in-memory structures
-- 🧭 Undo stack and queue-based search tracking
-- ⚡ Persistent recommendation data (saved in database)
+
+### 👥 Citizen Features
+- 📝 *Report Issues:* Submit detailed service requests with descriptions, categories, and file attachments.  
+- 🔎 *Track Service Requests:* Follow your request using a unique *Request Reference ID*, with live status updates.  
+- 📅 *Local Events & Announcements:* View and filter community events and municipal news.  
+- 🧠 *Smart Recommendations:* Get event recommendations based on recent searches and interactions.  
+- 📂 *Category & Date Filters:* Filter content dynamically to find relevant information quickly.
+
+### 🧑‍💼 Admin Features
+- 🔐 *Secure Admin Login:* Username & password authentication.  
+- 📊 *Admin Dashboard:* Review, search, and filter all service requests.  
+- ✏ *Update Request Status:* Change request states (Submitted → In Progress → Resolved → Closed).  
+- 📥 *File Download:* View or download user-submitted attachments.  
+- 🚪 *Logout Option:* End admin session securely.  
 
 ---
 
@@ -35,34 +33,38 @@ The platform is fully modular and scalable, making it suitable for integration i
   <img src="https://skillicons.dev/icons?i=dotnet,cs,bootstrap,javascript,html,css,sqlite,git,github,vscode" />
 </p>
 
-- **Frontend:** HTML5, CSS3, Bootstrap, JavaScript (Dynamic filtering and search)
-- **Backend:** ASP.NET Core MVC (C#)
-- **Database:** Entity Framework Core (SQLite / SQL Server)
-- **Version Control:** Git & GitHub
-- **IDE:** Visual Studio / VS Code
+- *Frontend:* HTML5, CSS3, Bootstrap 5, JavaScript  
+- *Backend:* ASP.NET Core MVC (C#)  
+- *Database:* Entity Framework Core with SQLite  
+- *Architecture:* MVC with layered services (Controllers, Models, Services)  
+- *IDE:* Visual Studio 2022 / VS Code  
+- *Version Control:* Git & GitHub  
 
 ---
 
-## ⚙️ How It Works
+## ⚙ How It Works
 
-### 🔍 Search & Recommendation Logic
-- When a user types a search query, it’s stored in a **queue**.
-- The system tracks the most frequent search terms in a **dictionary**.
-- Using a **priority queue**, the app identifies and recommends events most relevant to the user’s interests.
-- Recommendations are **persisted** to the database so that they remain after page reload or restart.
+### 🧾 Service Request Tracking (Part 3)
+- Each report is assigned a unique *Request Reference (MS-xxxx)*.  
+- A *Binary Search Tree (BST)* is used for fast lookup by reference.  
+- A *Priority Queue* (min-heap) prioritizes older requests for admin attention.  
+- A *Graph Structure* links related issues by location.  
+- A *Dictionary* organizes requests by category for quick filtering.  
+- Admins can update statuses, and history logs are recorded for transparency.
 
-### 🧾 Report Submission
-Users can submit reports to the municipality directly through the platform.
+### 📅 Local Events & Announcements
+- Events and announcements are loaded from the database and displayed with dynamic filters.
+- Users can search and filter by *keyword, **category, or **date range*.
+- A smart recommendation engine analyzes recent searches and suggests similar events.
 
-Each report includes:
-- Reporter name  
-- Category (e.g., “Water Issue”, “Road Damage”)  
-- Description of the problem  
-- Optional photo or document  
-
-The data is stored in the database and can be viewed by municipal staff for follow-up.
+### 🔐 Authentication
+- Secure *Admin Login* using credentials stored in configuration (appsettings.json).
+- Unauthorized users are redirected to an *Access Denied* view.
+- Session-based authentication ensures controlled admin access.
 
 ---
+
+
 
 ## 🗂️ Project Structure
 ```

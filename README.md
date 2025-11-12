@@ -37,7 +37,37 @@ all code was reviewed, customized, and tested by the author
 - 📊 *Admin Dashboard:* Review, search, and filter all service requests.  
 - ✏ *Update Request Status:* Change request states (Submitted → In Progress → Resolved → Closed).  
 - 📥 *File Download:* View or download user-submitted attachments.  
-- 🚪 *Logout Option:* End admin session securely.  
+- 🚪 *Logout Option:* End admin session securely.
+
+---
+
+ 🔐 Admin Login
+🧭 Accessing the Admin Dashboard
+
+Navigate to:
+👉 /Account/Login
+or click "Admin Login" in the navigation bar.
+
+Enter your administrator credentials.
+Default example credentials (for demo/testing):
+
+Username: admin
+Password: P@ssw0rd123
+
+
+(Credentials can be customized in the database or appsettings.json.)
+
+Upon successful login, you’ll be redirected to the Admin Dashboard:
+
+View all service requests
+
+Filter or search by request reference, category, or description
+
+Update request status (e.g., In Progress, Resolved, Closed)
+
+Download attachments for verification
+
+Logout securely after updates 
 
 ---
 
